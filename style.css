@@ -1,0 +1,373 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.container{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header{
+    display: flex;
+    position: fixed;
+    padding: 20px 50px 10px;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 3px black;
+    align-items: center;
+    background-color: white;
+    z-index: 2;
+    max-width: 2000px;
+
+    nav{
+        display: flex;
+        gap: 40px;
+        align-items: center;
+
+        ul{
+            display: flex;
+            list-style: none;
+            gap: 40px;
+    
+            a{
+                text-decoration: none;
+                color: black;
+                padding-bottom: 22px;
+                border-bottom: 3px solid transparent;
+                transition: border-bottom 0.3s;
+
+                &:hover{
+                    border-bottom: 3px solid black;
+                }
+            }
+        }
+    }
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    background-color: white;
+    max-width: 2000px;
+}
+
+#home{
+    width: 2000px;
+
+    &:has(.sobreposto:hover) img {
+        filter: brightness(0.4);
+    }
+
+    img{
+        filter: brightness(0.6);
+        z-index: 0;
+        position: absolute;
+        transition: filter 0.3s ease-in-out;
+    }
+
+    .sobreposto{
+        position: relative;
+        z-index: 1;
+        height: 1125.27px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        gap: 30px;
+
+        h1{
+            font-size: 50px;
+        }
+
+        a{
+            background-color: white;
+            color: black;
+        }
+    }
+}
+
+.button{
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 15px 25px;
+    border-radius: 5px;
+}
+
+#servicos{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    scroll-margin-top: 170px;
+
+    .cards{
+        display: flex;
+        gap: 70px;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 10px 100%;
+        border-radius: 10px;
+        
+        article{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 400px;
+            height: 530px;
+            padding: 20px;
+            transition: box-shadow 0.3s;
+            border-radius: 10px;
+            border: 1px solid black;
+            background-color: white;
+            text-align: center;
+
+            &:hover{
+                box-shadow: 0px 0px 10px black;
+            }
+
+            img{
+                width: 300px;
+                height: 200px;
+                overflow: hidden;
+                border-radius: 30px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+            }
+
+            a{
+                text-decoration: none;
+                color: black;
+                margin-top: 15%;
+            }
+        }
+    }
+}
+
+#sobre{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    scroll-margin-top: 170px;
+
+    .texto{
+        width: 800px;
+        height: 740px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 0px 110px 0px 30px;
+        /* padding-right: 500px; */
+        border-radius: 10px;
+        justify-content: center;
+
+        h1{
+            font-size: 45px;
+        }
+
+        .cards{
+            display: flex;
+            gap: 7px;
+
+            article{
+                background-color: white;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid black;
+                transition: box-shadow 0.3s;
+
+                &:hover{
+                    box-shadow: 0px 0px 6px black;
+                }
+            }
+        }
+
+        a{
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            width: 77px;
+            transition: background-color 0.3s;
+
+            &:hover{
+                background-color: rgb(204, 204, 204);
+            }
+        }
+    }
+
+    .side{
+        border-radius: 30px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+    }
+}
+
+.aval{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    
+    .avals{
+        display: flex;
+        gap: 50px;
+        margin-top: 30px;
+        width: 1500px;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 10px 0px 10px 10px;
+        border-radius: 10px;
+        
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        anchor-name: --carrosel;
+
+        &::scroll-button(*) {
+            border: 0;
+            font-size: 2rem;
+            background: none;
+            color: black;
+            opacity: 0.7;
+            cursor: pointer;
+            position: absolute;
+            position-anchor: --carrosel;
+        }
+
+        &::scroll-button(*):hover, &::scroll-button(*):focus {
+            opacity: 1;
+        }
+
+        &::scroll-button(*):active {
+            translate: 1px 1px;
+        }
+
+        &::scroll-button(*):disabled {
+            opacity: 0.2;
+            cursor: unset;
+        }
+
+        &::scroll-button(left) {
+            content: "◄";
+            right: calc(anchor(right) + 1518px);
+            bottom: calc(anchor(top) - 150px);
+        }
+
+        &::scroll-button(right) {
+            content: "►";
+            left: calc(anchor(right) + 10px);
+            bottom: calc(anchor(top) - 150px);
+        }
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+
+        article{
+            min-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border: 1px solid black;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            transition: box-shadow 0.2s;
+
+            scroll-snap-align: center;
+
+            &:hover{
+                box-shadow: 0px 0px 5px black;
+            }
+            
+            .pessoa{
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                img{
+                    border-radius: 30px;
+                }
+            }
+        }
+    }
+}
+
+#contato{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 80px;
+
+    .meios{
+        display: flex;
+        justify-content: space-between;
+        gap: 200px;
+        margin-top: 30px;
+        
+        article{
+            width: 250px;
+            height: 230px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            transition: box-shadow 0.2s;
+
+            &:hover{
+                box-shadow: 0px 0px 10px black
+            }
+
+            span{
+                text-decoration: underline;
+                user-select: all;
+            }
+        }
+    }
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(211, 182, 118);
+    border-top: 1px solid black;
+    height: 300px;
+    width: 2000px;
+
+    img{
+        height: 100px;
+        /* width: 90%; */
+        padding: 0 40% 20px;
+        border-bottom: 1px solid black;
+    }
+}
+
+.whatsapp{
+    position: fixed;
+    z-index: 4;
+    bottom: 30px;
+    right: 30px;
+    background-color: rgba(255, 253, 253, 0.2);
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 6px black;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
